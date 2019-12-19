@@ -1,0 +1,57 @@
+{
+    "name": "Fiddler",
+    "description": "Telerik: Leading UI controls and Reporting for .NET (ASP.NET AJAX, MVC, Core, Xamarin, WPF), Kendo UI for HTML5 and Angular development, and NativeScript.",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/20088-fiddler.jpg",
+    "tags": [
+        "api service provider",
+        "have api",
+        "proxy"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/fiddler\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Fiddler",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/20088-fiddler.jpg",
+            "humanURL": "http:\/\/www.telerik.com\/fiddler",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fiddler-openapi.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fiddler-postman-collection.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/telerik"
+        },
+        {
+            "type": "Email",
+            "url": "clientservice@telerik.com"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/Telerik"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/telerikfiddler"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/www.telerik.com\/fiddler"
+        }
+    ]
+}
