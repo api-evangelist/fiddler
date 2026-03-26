@@ -1,0 +1,32 @@
+aid: fiddler
+name: Fiddler
+description: >-
+  Fiddler is an HTTP debugging proxy tool for logging, inspecting, and modifying HTTP and HTTPS traffic between computers.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - API Analysis
+  - Traffic Analysis
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/fiddler/refs/heads/main/apis.yml
+created: '2026-03-26'
+modified: '2026-03-26'
+specificationVersion: '0.19'
+apis:
+  - aid: fiddler:fiddler
+    name: Fiddler
+    description: >-
+      Fiddler is an HTTP debugging proxy tool for logging, inspecting, and modifying HTTP and HTTPS traffic between computers.
+    humanURL: https://www.telerik.com/fiddler
+    tags:
+      - API Analysis
+      - Traffic Analysis
+    properties:
+      - type: Documentation
+        url: https://docs.telerik.com/fiddler
+common:
+  - type: Website
+    url: https://www.telerik.com/fiddler
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
