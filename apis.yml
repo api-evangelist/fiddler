@@ -10,11 +10,11 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
+  - API Debugging
   - HTTP Debugging
   - HTTP Proxy
-  - Traffic Inspection
-  - API Debugging
   - Performance Testing
+  - Traffic Inspection
   - Web Development
 url: >-
   https://raw.githubusercontent.com/api-evangelist/fiddler/refs/heads/main/apis.yml
@@ -31,9 +31,9 @@ apis:
       debugging and API testing workflows.
     humanURL: https://www.telerik.com/fiddler/fiddler-everywhere
     tags:
-      - HTTP Debugging
-      - Cross Platform
       - API Testing
+      - Cross Platform
+      - HTTP Debugging
       - Traffic Capture
     properties:
       - type: Documentation
@@ -51,10 +51,10 @@ apis:
       through FiddlerScript and extensions.
     humanURL: https://www.telerik.com/fiddler/fiddler-classic
     tags:
-      - HTTP Debugging
-      - Windows
       - Free Tool
+      - HTTP Debugging
       - Traffic Logging
+      - Windows
     properties:
       - type: Documentation
         url: https://docs.telerik.com/fiddler/configure-fiddler/tasks/configurefiddler
@@ -71,8 +71,8 @@ apis:
     tags:
       - Browser Extension
       - Collaboration
-      - Troubleshooting
       - Support
+      - Troubleshooting
     properties:
       - type: Documentation
         url: https://docs.telerik.com/fiddler-jam/introduction
