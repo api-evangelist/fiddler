@@ -91,7 +91,7 @@ common:
     url: https://www.telerik.com/support/fiddler-everywhere
   - type: Login
     url: https://www.telerik.com/login
-  - type: Signup
+  - type: SignUp
     url: https://www.telerik.com/login#register
   - type: Videos
     url: https://www.youtube.com/c/progresssw
