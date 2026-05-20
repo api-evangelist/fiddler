@@ -77,6 +77,10 @@ apis:
       - type: Documentation
         url: https://docs.telerik.com/fiddler-jam/introduction
 common:
+  - type: GitHubOrganization
+    url: https://github.com/fiddler-labs
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/fiddler-ai
   - type: Website
     url: https://www.telerik.com/fiddler
   - type: Documentation
