@@ -2,12 +2,20 @@
   "repo": "fiddler",
   "feeds": [
     {
-      "source": "https://www.telerik.com/blogs/fiddler",
+      "source": "https://feeds.telerik.com/blogs/productivity-debugging",
       "feed_url": "https://feeds.telerik.com/blogs/productivity-debugging",
-      "title": "Telerik Blogs | Productivity | Debugging",
-      "saved": 7
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://docs.telerik.com/fiddler-everywhere/introduction",
+      "feed_url": "https://docs.telerik.com/fiddler-everywhere/introduction",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
   "post_count": 17,
-  "fetched": "2026-05-17T20:48:52Z"
+  "fetched": "2026-06-01T23:35:02Z"
 }
