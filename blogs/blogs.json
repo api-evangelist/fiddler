@@ -2,11 +2,11 @@
   "repo": "fiddler",
   "feeds": [
     {
-      "source": "https://feeds.telerik.com/blogs/productivity-debugging",
+      "source": "https://www.telerik.com/blogs/fiddler",
       "feed_url": "https://feeds.telerik.com/blogs/productivity-debugging",
       "title": "",
       "saved": 0,
-      "method": "feed"
+      "method": "discovered"
     },
     {
       "source": "https://docs.telerik.com/fiddler-everywhere/introduction",
@@ -17,5 +17,5 @@
     }
   ],
   "post_count": 17,
-  "fetched": "2026-06-01T23:35:02Z"
+  "fetched": "2026-06-14T20:42:17Z"
 }
