@@ -77,6 +77,10 @@ apis:
       - type: Documentation
         url: https://docs.telerik.com/fiddler-jam/introduction
 common:
+  - type: VulnerabilityDisclosure
+    url: security/fiddler-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/fiddler-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/fiddler-labs
   - type: LinkedIn
