@@ -1,0 +1,46 @@
+generated: '2026-08-29'
+method: searched
+source: https://www.progress.com/trust-center
+provider: Fiddler
+providerId: fiddler
+description: >-
+  Fiddler is a Progress Software (Telerik) product and has no product-scoped
+  trust center of its own; assurance is published at the Progress corporate
+  level. Recorded here because the certifications it names are the ones asserted
+  against the Fiddler Everywhere tiers on the purchase page.
+trust_center:
+  url: https://www.progress.com/trust-center
+  status: 200
+  portal: https://trust.progress.com
+  scope: Progress Software (corporate)
+certifications:
+  - ISO/IEC 27001
+  - SOC 2
+  - HIPAA
+statements:
+  iso_27001: >-
+    "Progress has established and maintains an Information Security Management
+    System (ISMS) in accordance with the ISO/IEC 27001 certification standards."
+  soc_2: >-
+    "Progress has achieved SOC 2 compliance which validates our commitment to
+    security, confidentiality and privacy."
+  hipaa: >-
+    "Progress enables customers that are subject to the Health Insurance
+    Portability and Accountability Act of 1996 (HIPAA)."
+related:
+  vulnerability_reporting: https://www.progress.com/trust-center/vulnerability-reporting-policy
+  privacy_center: https://www.progress.com/legal/privacy-center
+  law_enforcement_guidelines: https://www.progress.com/trust-center/law-enforcement-guidelines
+contacts:
+  security: security@progress.com
+  privacy: privacy@progress.com
+  legal: legal@progress.com
+product_scoped_claims:
+  source: https://www.telerik.com/purchase/fiddler
+  claims:
+    - SOC 2 Compliant (all Fiddler Everywhere tiers)
+    - HIPAA Compliant (all Fiddler Everywhere tiers)
+    - GDPR Compliant (all Fiddler Everywhere tiers)
+not_found:
+  - path: https://www.progress.com/legal/trust-center
+    status: 404

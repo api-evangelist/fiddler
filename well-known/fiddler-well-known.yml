@@ -1,0 +1,43 @@
+generated: '2026-08-29'
+method: probed
+source: live HTTP probes of https://www.telerik.com/.well-known/* and https://docs.telerik.com/.well-known/*
+provider: Fiddler
+providerId: fiddler
+description: >-
+  Record of the /.well-known/ surface served by the hosts behind the Fiddler
+  product family (Progress Telerik). www.telerik.com serves a real RFC 9116
+  security.txt and an RFC 8414 OAuth authorization server metadata document.
+  The OAuth document belongs to the Sitefinity-powered telerik.com website
+  identity (Telerik Identity login), NOT to a Fiddler product API — Fiddler
+  Everywhere's own agent surface is a loopback MCP server, documented in
+  mcp/fiddler-mcp.yml.
+hosts:
+  - host: www.telerik.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: fiddler-security.txt
+        note: RFC 9116. Contact is the Progress DevTools Bugcrowd VDP; Expires 2027-01-01.
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        file: fiddler-oauth-authorization-server.json
+        note: >-
+          RFC 8414 metadata for the telerik.com Sitefinity website login
+          (issuer https://www.telerik.com). Authorization-code + refresh_token
+          with PKCE S256. No scopes_supported is advertised. This is the site
+          identity provider, not a Fiddler product API.
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: docs.telerik.com
+    documents:
+      - path: /llms.txt
+        status: 404
+        note: Not served on the docs host; a real llms.txt is served at https://www.telerik.com/llms.txt (saved to llms/).

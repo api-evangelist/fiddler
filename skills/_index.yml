@@ -1,0 +1,49 @@
+generated: '2026-08-29'
+method: searched
+source: https://github.com/telerik/fiddler-agent-tools
+provider: Fiddler
+providerId: fiddler
+description: >-
+  Official Agent Skills published by Progress Telerik for Fiddler Everywhere.
+  Saved VERBATIM from the provider's own repository — nothing here was authored
+  by API Evangelist. The skills teach a coding agent to install Fiddler
+  Everywhere, wire its MCP server into the agent's client config, and analyse
+  captured HTTP/HTTPS traffic. All three require Fiddler Everywhere installed and
+  running locally; they are explicitly not compatible with Fiddler Classic.
+repository: https://github.com/telerik/fiddler-agent-tools
+repository_default_branch: master
+repository_created: '2026-04-02'
+repository_last_push: '2026-08-03'
+docs: https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/agent-skills
+install:
+  - method: skills-cli
+    command: npx skills add telerik/fiddler-agent-tools/skills
+  - method: git
+    command: git clone https://github.com/telerik/fiddler-agent-tools.git
+mcp: mcp/fiddler-mcp.yml
+skills:
+  - name: fiddler-download-setup
+    file: skills/fiddler-download-setup.md
+    source: https://github.com/telerik/fiddler-agent-tools/blob/master/skills/fiddler-download-setup/SKILL.md
+    method: searched
+    summary: >-
+      Download, install, and launch Fiddler Everywhere from scratch, then chain
+      into MCP configuration. Shell-first, because no MCP tools exist yet.
+  - name: fiddler-mcp-setup
+    file: skills/fiddler-mcp-setup.md
+    source: https://github.com/telerik/fiddler-agent-tools/blob/master/skills/fiddler-mcp-setup/SKILL.md
+    method: searched
+    summary: >-
+      Connect a coding assistant (Claude Code, GitHub Copilot CLI, Copilot in VS
+      Code, Cursor, Codex) to the Fiddler MCP server; discovers the MCP port
+      (default 8868) and writes the client config.
+  - name: fiddler-traffic-debugging
+    file: skills/fiddler-traffic-debugging.md
+    source: https://github.com/telerik/fiddler-agent-tools/blob/master/skills/fiddler-traffic-debugging/SKILL.md
+    method: searched
+    summary: >-
+      Verify a developer-run feature behaved correctly by analysing HTTP traffic
+      captured by Fiddler Everywhere, producing a debugging report.
+skill_count: 3
+prompt_library: https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/prompt-library
+custom_skills_guide: https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/creating-custom-skills

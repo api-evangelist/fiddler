@@ -1,0 +1,218 @@
+generated: '2026-08-29'
+method: searched
+source: https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/fiddler-mcp-server
+provider: Fiddler
+providerId: fiddler
+name: Fiddler Everywhere MCP Server
+description: >-
+  Fiddler Everywhere ships a first-party Model Context Protocol server that lets
+  a coding agent drive the locally installed proxy: start browser/terminal/
+  network captures, read captured sessions and full request/response details,
+  apply filters, create traffic-rewriting rules, manage a reverse proxy, and
+  cache LLM agent calls. The server is hosted BY the desktop application on the
+  loopback interface — it is not a hosted, internet-reachable endpoint.
+docs:
+  - https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/fiddler-mcp-server
+  - https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/agent-skills
+  - https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/prompt-library
+  - https://www.telerik.com/fiddler/fiddler-everywhere/mcp
+status: published
+deployment:
+  mode: local-stdio
+  endpoint: ''
+  install: >-
+    Install Fiddler Everywhere (Pro or higher), then enable Settings > MCP Server
+    and generate an API key. Automated client configuration is offered from
+    inside the app; manual clients point at http://localhost:8868/mcp.
+  package: https://www.telerik.com/download/fiddler-everywhere
+  auth: api-key
+  verified: searched
+  note: >-
+    RECORDED AS local-stdio BECAUSE IT IS NOT AGENT-REACHABLE WITHOUT A HUMAN.
+    The transport is streamable HTTP rather than stdio — the documented server
+    URL is http://localhost:8868/mcp — but that is a LOOPBACK address served by
+    the Fiddler Everywhere desktop app on the developer's own machine. There is
+    no hosted endpoint an agent can POST to; a person must install the app, sign
+    in, hold a Pro-or-higher subscription and generate an API key first. Port and
+    server handle (#fiddler) are configurable in Settings > MCP Server.
+transport: streamable-http (loopback)
+default_url: http://localhost:8868/mcp
+default_handle: '#fiddler'
+authentication:
+  type: api-key
+  header: Authorization
+  scheme: ApiKey
+  example: 'Authorization: ApiKey <key generated in Settings > MCP Server>'
+  requires_subscription: Fiddler Everywhere Pro or higher
+prerequisites:
+  - Latest version of Fiddler Everywhere installed and running
+  - Fiddler Everywhere Pro or higher subscription
+  - Active internet connection
+  - API key generated in Settings > MCP Server
+  - Administrator privileges for the network-capture extension (capture_application)
+clients_documented:
+  - name: GitHub Copilot in Visual Studio Code
+    config_file: .vscode/mcp.json
+  - name: Cursor
+    config_file: .cursor/mcp.json
+  - name: Claude Code
+    config_file: .mcp.json
+    cli: 'claude mcp add --transport http fiddler http://localhost:8868/mcp -H "Authorization: ApiKey KEY_HERE"' 
+  - name: Claude Desktop
+    config_file: claude_desktop_config.json
+    note: Bridged with npx mcp-remote per the fiddler-mcp-setup skill.
+  - name: GitHub Copilot CLI
+    config_file: ~/.copilot/mcp-config.json
+tools:
+  - name: get_status
+    category: authentication-and-status
+    description: >-
+      Gets the current status of Fiddler, including IsUserLoggedIn,
+      IsRootCertificateTrusted, number of Browser and Terminal instances running,
+      reverse proxy status and configured ports, IsSystemProxyEnabled,
+      IsNetworkCaptureEnabled, and the number of captured and visible sessions.
+  - name: is_user_logged_in
+    category: authentication-and-status
+    description: Indicates whether Fiddler is currently authenticated.
+  - name: initiate_login
+    category: authentication-and-status
+    description: Performs login to Fiddler. Opens a new Chrome window for authentication.
+  - name: open_trust_root_certificate_dialog
+    category: authentication-and-status
+    description: Opens the system trust root certificate dialog. Required for HTTPS traffic interception.
+  - name: start_capture_with_browser
+    category: traffic-capture
+    description: Opens a fresh Chrome-based browser instance with Fiddler proxy settings applied.
+  - name: start_capture_with_terminal
+    category: traffic-capture
+    description: Starts a new terminal with Fiddler proxy settings applied.
+  - name: capture_application
+    category: traffic-capture
+    description: >-
+      Starts network-level traffic capture scoped to a specific application.
+      Accepts an optional process name or PID; auto-detects the target from the
+      active IDE or CLI context when omitted.
+    parameters:
+      - name: process name or PID
+        required: false
+  - name: get_sessions
+    category: session-management
+    description: >-
+      Gets the sessions from the specified Fiddler sessions source with active
+      filters applied. LiveTraffic for captured HTTP/HTTPS traffic, AgentCalls
+      for LLM agent API calls.
+    parameters:
+      - name: sessionsSource
+        required: true
+  - name: get_sessions_count
+    category: session-management
+    description: Gets the number of sessions in the specified Fiddler sessions source.
+    parameters:
+      - name: sessionsSource
+        required: true
+  - name: get_session_details
+    category: session-management
+    description: >-
+      Gets detailed information about a specific session, including request and
+      response headers, bodies, HTTP method, URL, status code, protocol, start
+      time, duration, client and remote HTTP versions, TLS versions and IPs.
+    parameters:
+      - name: sessionId
+        required: true
+        type: integer
+      - name: sessionsSource
+        required: true
+  - name: apply_filters
+    category: session-management
+    description: >-
+      Applies filters to the specified sessions source. Applying filters wipes
+      all existing filters; call with an empty filter collection to clear.
+    parameters:
+      - name: filters
+        required: true
+        type: object
+      - name: sessionsSource
+        required: true
+  - name: clear_sessions
+    category: session-management
+    description: Clears all sessions in the specified Fiddler sessions source.
+    parameters:
+      - name: sessionsSource
+        required: true
+  - name: cache_agent_calls
+    category: agent-cache
+    description: >-
+      Enables or disables caching for a specific session in the Agent Calls
+      section.
+    parameters:
+      - name: sessionId
+        required: true
+        type: integer
+      - name: enableCache
+        required: true
+        type: boolean
+  - name: check_cache_status
+    category: agent-cache
+    description: Checks whether a specific session in the Agent Calls section is currently cached.
+    parameters:
+      - name: sessionId
+        required: true
+        type: integer
+  - name: create_rule
+    category: rules
+    description: >-
+      Creates a rule to modify sessions in Fiddler, applied to all sessions
+      matching the specified criteria. At least one condition must be specified.
+  - name: clear_rules
+    category: rules
+    description: Clears all rules created from the MCP server.
+  - name: add_reverse_proxy_port
+    category: reverse-proxy
+    description: >-
+      Adds a reverse proxy configuration forwarding requests from a local port to
+      a remote host and intercepting the traffic in between.
+    parameters:
+      - name: clientPort
+        required: true
+        type: integer
+      - name: remoteHost
+        required: true
+        type: string
+  - name: remove_reverse_proxy_port
+    category: reverse-proxy
+    description: Removes a reverse proxy configuration for a specific port.
+    parameters:
+      - name: clientPort
+        required: true
+        type: integer
+  - name: enable_reverse_proxy
+    category: reverse-proxy
+    description: Enables the reverse proxy.
+  - name: disable_reverse_proxy
+    category: reverse-proxy
+    description: Disables the reverse proxy.
+tool_count: 20
+governance:
+  output_sanitization: >-
+    Fiddler Everywhere can sanitize captured traffic before it is handed to the
+    MCP client, removing sensitive values from what the model sees.
+  access_policy:
+    - platform: Windows
+      key: DisableMCP
+      type: DWORD-32
+      example: '1'
+    - platform: macOS
+      key: DisableMCP
+      type: integer
+      example: '1'
+  note: >-
+    Administrators can disable the MCP server entirely through managed
+    application configuration on both Windows and macOS.
+introspection:
+  attempted: false
+  reason: >-
+    tools/list could not be probed. The server binds to loopback on the end
+    user's machine and requires an installed, licensed, signed-in Fiddler
+    Everywhere plus a generated API key. The tool list above is transcribed from
+    the provider's own published reference, not from a live handshake.
+skills: skills/_index.yml

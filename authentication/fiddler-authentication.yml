@@ -1,0 +1,67 @@
+generated: '2026-08-29'
+method: searched
+source: https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/fiddler-mcp-server
+provider: Fiddler
+providerId: fiddler
+description: >-
+  Authentication profile for the Fiddler programmatic surface. Fiddler publishes
+  no OpenAPI, so nothing here is derived from securitySchemes — every scheme
+  below was read from the provider's own documentation or probed from a live
+  /.well-known/ document.
+schemes:
+  - id: mcp-api-key
+    name: Fiddler MCP Server API Key
+    type: apiKey
+    in: header
+    header: Authorization
+    scheme_prefix: ApiKey
+    example: 'Authorization: ApiKey <key>'
+    surface: http://localhost:8868/mcp
+    issuance: >-
+      Generated inside the Fiddler Everywhere desktop application at
+      Settings > MCP Server. As of Fiddler Everywhere 7.7.2 (2026-03-26) the app
+      exposes an internal API endpoint for MCP API key generation.
+    rotation: Regenerate from Settings > MCP Server. No published rotation policy or expiry.
+    entitlement: Requires a Fiddler Everywhere Pro or higher subscription.
+    additional_gates:
+      - The user must be signed in to Fiddler Everywhere (is_user_logged_in / initiate_login).
+      - The Fiddler root certificate must be trusted for HTTPS interception.
+      - An administrator can disable the server entirely via the DisableMCP policy key.
+    docs: https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/fiddler-mcp-server
+  - id: telerik-identity-oauth2
+    name: Telerik Identity (telerik.com website OAuth 2.0)
+    type: oauth2
+    flows:
+      - authorization_code
+      - refresh_token
+    issuer: https://www.telerik.com
+    authorization_endpoint: https://www.telerik.com/sitefinity/oauth/authorize
+    token_endpoint: https://www.telerik.com/sitefinity/oauth/token
+    pkce: S256
+    scopes_supported: []
+    discovery: https://www.telerik.com/.well-known/oauth-authorization-server
+    method: probed
+    status: 200
+    scope_note: >-
+      The metadata document advertises no scopes_supported, so no scopes/
+      artifact is emitted — there is nothing to enumerate.
+    ownership_note: >-
+      This is the Sitefinity-backed Telerik Identity used to sign in to
+      telerik.com (accounts, licences, downloads, support). It is NOT an
+      authorization server for a Fiddler product API; Fiddler's own agent surface
+      uses the API-key scheme above.
+  - id: fiddler-account-login
+    name: Fiddler Everywhere application sign-in
+    type: interactive
+    surface: desktop application
+    description: >-
+      The desktop app authenticates the user through a browser window
+      (initiate_login opens a Chrome window). The MCP tools is_user_logged_in and
+      initiate_login expose this state to an agent, but the agent cannot supply
+      credentials itself — a human completes the flow.
+    sso: SAML/SSO is an Enterprise-tier feature per the pricing page.
+no_openapi: true
+no_openapi_note: >-
+  Contract discovery on 2026-08-29 probed /openapi.json, /swagger.json and
+  /api-docs on www.telerik.com and docs.telerik.com (all 404) and api.telerik.com
+  (does not resolve). Fiddler publishes no REST contract.

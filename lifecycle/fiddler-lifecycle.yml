@@ -1,0 +1,83 @@
+generated: '2026-08-29'
+method: searched
+source: https://www.telerik.com/purchase/license-agreement/fiddler
+provider: Fiddler
+providerId: fiddler
+description: >-
+  Versioning, release, deprecation and status posture for the Fiddler product
+  family. Fiddler ships desktop software rather than a hosted API, so lifecycle
+  here is product lifecycle: version cadence, product retirement, and licence
+  changes that end a product's commercial use.
+versioning:
+  scheme: semver
+  surface: product build version (major.minor.patch)
+  current:
+    product: Fiddler Everywhere
+    version: 8.0.2
+    date: '2026-07-30'
+  api_versioning: none
+  api_versioning_note: >-
+    The MCP server is versioned with the application, not independently. No
+    URL-path, header or date-based API version is published.
+release_history:
+  - product: Fiddler Everywhere
+    url: https://www.telerik.com/support/whats-new/fiddler-everywhere/release-history
+  - product: Fiddler Classic
+    url: https://www.telerik.com/support/whats-new/fiddler/release-history
+changelog: changelog/fiddler-changelog.yml
+status_page:
+  url: https://status.telerik.com
+  status: 200
+  method: probed
+  note: >-
+    Progress also operates https://status.progress.com (200). Both were probed
+    live on 2026-08-29.
+deprecation:
+  policy_published: true
+  policy_url: https://www.telerik.com/purchase/license-agreement/fiddler
+  mechanism: licence agreement and product retirement notices, not HTTP Sunset/Deprecation headers
+  rfc8594_headers: false
+  events:
+    - product: Fiddler Classic
+      change: commercial use ended
+      effective: '2026-08-03'
+      grace_period_days: 45
+      hard_stop: '2026-09-17'
+      quote: >-
+        "Effective Aug 3, 2026, Fiddler Classic is licensed for non-commercial
+        use only." / "Commercial users must transition to Fiddler Everywhere
+        within 45 days." / "Continued commercial use after 17 Sep 2026 isn't
+        supported under this license agreement."
+      migration_target: Fiddler Everywhere
+      source: https://www.telerik.com/purchase/license-agreement/fiddler
+      status: 200
+    - product: Fiddler Jam
+      change: retired
+      announced_effective: '2024-07-01'
+      data_deleted: '2024-12-01'
+      quote: >-
+        "As of July 1, 2024, Progress Software discontinues Fiddler Jam and you
+        will no longer have access to the extension." / "Effective December 1,
+        2024, all data will be deleted, and Fiddler Jam will no longer be a part
+        of the Progress Software portfolio in any way."
+      migration_target: Fiddler Everywhere
+      source: https://www.telerik.com/purchase/fiddler-jam
+      status: 200
+      probe_note: >-
+        The former product page https://www.telerik.com/fiddler/jam and its docs
+        https://docs.telerik.com/fiddler-jam/introduction both returned 404 on
+        2026-08-29. The retirement notice survives on the purchase page.
+sla:
+  published: false
+  note: >-
+    No uptime SLA is published — Fiddler is installed software. What IS published
+    per tier is a SUPPORT response commitment: Basic 72h (Lite), Lite 72h (Pro),
+    Priority 24h (Enterprise), with ticket allowances per tier. See
+    plans/fiddler-plans-pricing.yml.
+support:
+  url: https://www.telerik.com/support/fiddler-everywhere
+  status: 200
+roadmap:
+  url: https://feedback.telerik.com/fiddler-everywhere
+  status: 200
+  note: Public feedback and feature-request portal for Fiddler Everywhere.

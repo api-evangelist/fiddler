@@ -1,0 +1,163 @@
+generated: '2026-08-29'
+method: searched
+source: https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/fiddler-mcp-server
+provider: Fiddler
+providerId: fiddler
+description: >-
+  Cross-cutting runtime semantics for Fiddler's only programmatic interface: the
+  Fiddler Everywhere MCP server. There is no REST/GraphQL contract, so nothing
+  here is derived from an OpenAPI — every statement is read from the provider's
+  MCP reference, or recorded as undocumented.
+surface:
+  interface: MCP (Model Context Protocol)
+  transport: streamable HTTP over loopback
+  endpoint: http://localhost:8868/mcp
+  reachability: >-
+    Local only. The server is bound to the developer's own machine by the
+    installed desktop app; there is no hosted endpoint.
+authentication:
+  style: API key in an Authorization header with an ApiKey scheme
+  detail: authentication/fiddler-authentication.yml
+idempotency:
+  supported: false
+  status: undocumented
+  header: null
+  note: >-
+    No idempotency key, replay window or retry-safety guarantee is documented for
+    any MCP tool. Several tools are naturally idempotent by shape
+    (enable_reverse_proxy, disable_reverse_proxy, cache_agent_calls with a fixed
+    enableCache value), but the provider makes no such guarantee and none is
+    claimed here. No Idempotency pointer is emitted in apis.yml.
+pagination:
+  supported: false
+  status: undocumented
+  note: >-
+    get_sessions returns the sessions in the named source with active filters
+    applied. No page, cursor, offset or limit parameter is documented; volume is
+    controlled with apply_filters instead.
+filtering:
+  mechanism: apply_filters
+  scope: per sessions source (LiveTraffic or AgentCalls)
+  semantics: >-
+    Applying filters WIPES all existing filters — it is a replace, not a merge.
+    Passing an empty filter collection clears filtering.
+sources:
+  - name: LiveTraffic
+    description: Real-time captured HTTP/HTTPS traffic.
+  - name: AgentCalls
+    description: >-
+      LLM agent API calls; each session additionally carries isCached, the LLM
+      model name, and a preview of the last user prompt.
+sources_note: >-
+  Agent calls are also HTTP traffic, so they appear in BOTH sources. A
+  clear_sessions on one source is not scoped away from the other's contents.
+identifiers:
+  session_id:
+    type: integer
+    origin: the numeric value shown in the ID column of the Fiddler Everywhere traffic grid
+    stability: per capture session; not a durable global identifier
+versioning:
+  style: application version (semver); the MCP surface ships with the app
+  detail: lifecycle/fiddler-lifecycle.yml
+errors:
+  envelope: undocumented
+  catalog: none published
+  note: >-
+    No error code registry or problem-details envelope is published for the MCP
+    tools, so no errors/ artifact is emitted rather than one being invented.
+rate_limit_signaling:
+  supported: false
+  detail: rate-limits/fiddler-rate-limits.yml
+  note: Gating is by licence tier and admin policy, not throughput.
+data_handling:
+  output_sanitization: >-
+    Fiddler Everywhere can sanitize captured traffic before handing it to the MCP
+    client, removing sensitive values from what the model sees. This is the
+    provider's own control on what leaves the machine.
+  admin_kill_switch:
+    key: DisableMCP
+    windows: DWORD-32
+    macos: integer
+dry_run_mode:
+  supported: false
+  status: undocumented
+  note: >-
+    No preview/validate-only mode is documented for create_rule,
+    add_reverse_proxy_port or any other write tool.
+reversibility:
+  grade: documented
+  grade_basis: >-
+    Every destructive-or-configuring tool except clear_sessions has a named,
+    documented inverse, but the provider states NO time window for any of them.
+    Per the rubric that is `documented` (0.4), not `verified` (1.0). No window is
+    asserted here because none is published — inventing one would be the one
+    error in this artifact that could cost a user real data.
+  surfaces:
+    - operation: create_rule
+      writes: traffic-rewriting rules applied to matching sessions
+      reversal: clear_rules
+      reversal_scope: >-
+        "Clears all rules created from the MCP server." Scoped to MCP-created
+        rules; rules a human authored in the app UI are not affected.
+      window: not stated
+      granularity: all-or-nothing — there is no documented remove-one-rule tool
+      docs: https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/fiddler-mcp-server
+    - operation: add_reverse_proxy_port
+      writes: a reverse proxy forwarding a local port to a remote host
+      reversal: remove_reverse_proxy_port
+      window: not stated
+      granularity: per clientPort
+      docs: https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/fiddler-mcp-server
+    - operation: enable_reverse_proxy
+      writes: activates reverse proxying
+      reversal: disable_reverse_proxy
+      window: not stated
+      docs: https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/fiddler-mcp-server
+    - operation: cache_agent_calls
+      writes: marks a session as cached so future matching requests are served from cache
+      reversal: cache_agent_calls with enableCache=false
+      reversal_detail: >-
+        "the session remains in the Agent Calls section but stops serving cached
+        responses" — the flag is reversible, the session is not removed.
+      window: not stated
+      docs: https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/fiddler-mcp-server
+    - operation: apply_filters
+      writes: replaces the filter set on a sessions source
+      reversal: apply_filters with an empty filter collection
+      reversal_caveat: >-
+        Restores the unfiltered view, but the PREVIOUS filter set is not
+        recoverable — applying filters wipes all existing filters.
+      window: not stated
+    - operation: clear_sessions
+      writes: deletes every session in a sessions source
+      reversal: none
+      irreversible: true
+      note: >-
+        No undo, restore or trash is documented. Captured traffic not already
+        saved or exported is gone. This is the one MCP tool an agent should treat
+        as unrecoverable.
+  read_only_tools:
+    - get_status
+    - is_user_logged_in
+    - get_sessions
+    - get_sessions_count
+    - get_session_details
+    - check_cache_status
+  environment_changing_tools:
+    - initiate_login
+    - open_trust_root_certificate_dialog
+    - start_capture_with_browser
+    - start_capture_with_terminal
+    - capture_application
+  environment_note: >-
+    These change machine state (open windows, install a network-capture
+    extension, trust a root certificate) rather than provider-side records. Root
+    certificate trust and the network-capture extension both require
+    administrator approval and are undone through the operating system, not
+    through any MCP tool.
+cross_links:
+  authentication: authentication/fiddler-authentication.yml
+  lifecycle: lifecycle/fiddler-lifecycle.yml
+  rate_limits: rate-limits/fiddler-rate-limits.yml
+  mcp: mcp/fiddler-mcp.yml
+  conformance: conformance/fiddler-conformance.yml

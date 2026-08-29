@@ -1,0 +1,100 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  api.nuget.org registration metadata, registry.npmjs.org, and
+  https://www.telerik.com/fiddlercore
+provider: Fiddler
+providerId: fiddler
+description: >-
+  First-party distributable libraries and skill packages for the Fiddler family.
+  Registries probed on 2026-08-29: NuGet (api.nuget.org / azuresearch-usnc),
+  npm (registry.npmjs.org), plus the provider's own download and FiddlerCore
+  pages. Fiddler ships desktop software rather than a hosted API, so there is no
+  conventional REST client-SDK family — the embeddable proxy engine FiddlerCore
+  is the closest thing to an SDK the provider sells.
+registries_probed:
+  - registry: nuget
+    result: 2 first-party helper packages published by Progress
+  - registry: npm
+    result: >-
+      No Progress/Telerik-published Fiddler package. `fiddler-everywhere`,
+      `fiddler-everywhere-reporter` and `@telerik/fiddler` are all absent; the
+      unscoped `fiddler` package (v0.0.1, 2014) is a third-party stub, not
+      Progress.
+  - registry: pypi
+    result: not probed — no Python distribution is documented by the provider
+  - registry: maven
+    result: not probed — no JVM distribution is documented by the provider
+packages:
+  - name: FiddlerCore
+    official: true
+    kind: sdk
+    language: .NET / .NET Standard
+    registry: none
+    distribution: licensed download from the provider
+    url: https://www.telerik.com/fiddlercore
+    docs: https://www.telerik.com/support/fiddlercore
+    version: null
+    published: null
+    note: >-
+      The embeddable Fiddler proxy engine for .NET applications. It is sold and
+      delivered as a licensed download, NOT through a public package registry —
+      there is no NuGet listing for the engine itself, so no registry metadata
+      endpoint exists to read a version or release date from. version/published
+      are null because they were checked and nothing publishable was found, not
+      because they were skipped.
+  - name: FiddlerCore5.NetworkConnections
+    official: true
+    kind: library
+    language: .NET
+    registry: nuget
+    url: https://www.nuget.org/packages/FiddlerCore5.NetworkConnections
+    project_url: https://www.telerik.com/fiddler/fiddlercore
+    authors: Progress
+    version: 0.2.0
+    published: '2023-03-14'
+    description: >-
+      Extensible solution for managing the proxy settings of network connections.
+    note: >-
+      First-party (authors "Progress", projectUrl telerik.com/fiddler/fiddlercore).
+      DECAY SIGNAL: last published 2023-03-14 — over three years before this
+      pass, and still at 0.2.0, while Fiddler Everywhere shipped 8.0.2 in July
+      2026. The FiddlerCore satellite packages are not being maintained on the
+      cadence of the flagship product.
+  - name: BCMakeCert
+    official: true
+    kind: library
+    language: .NET
+    registry: nuget
+    url: https://www.nuget.org/packages/BCMakeCert
+    project_url: https://www.telerik.com/fiddler/fiddlercore
+    authors: Progress
+    version: 2.0.9
+    published: '2023-03-14'
+    description: >-
+      Cryptography implementations based on the BouncyCastle C# API, used by the
+      BCCertMaker certificate provider for FiddlerCore.
+    note: >-
+      First-party FiddlerCore dependency. Same 2023-03-14 publish date and same
+      decay signal as FiddlerCore5.NetworkConnections.
+  - name: fiddler-agent-tools
+    official: true
+    kind: agent-skills
+    registry: github
+    url: https://github.com/telerik/fiddler-agent-tools
+    install: npx skills add telerik/fiddler-agent-tools/skills
+    version: null
+    published: '2026-08-03'
+    published_field: last push to the default branch (master)
+    note: >-
+      Official Fiddler Everywhere Agent Skills, distributed from a Git repository
+      rather than a package registry — there is no tag, release or registry
+      metadata endpoint, so version is null. The `published` date is the
+      repository's last push, which is the only dated signal available. The
+      skills themselves are saved in skills/ and indexed in skills/_index.yml.
+package_count: 4
+official_package_count: 4
+sdk_note: >-
+  There is no HTTP client SDK because there is no hosted HTTP API. The agent
+  integration path is the MCP server (mcp/fiddler-mcp.yml) plus the skills above,
+  and the embedding path is FiddlerCore.

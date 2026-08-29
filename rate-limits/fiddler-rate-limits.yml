@@ -3,101 +3,43 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: Fiddler
 providerId: fiddler
+generated: '2026-08-29'
+method: searched
+source: https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/fiddler-mcp-server
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+modified: '2026-08-29'
 tags:
   - API Debugging
   - HTTP Debugging
-  - HTTP Proxy
-  - Performance Testing
-  - Traffic Inspection
-  - Web Development
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Fiddler API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
-responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
-limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Fiddler Everywhere
-      - Fiddler Classic
-      - Fiddler Jam
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Fiddler Everywhere
-      - Fiddler Classic
-      - Fiddler Jam
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Fiddler Everywhere
-      - Fiddler Classic
-      - Fiddler Jam
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Fiddler Everywhere
-      - Fiddler Classic
-      - Fiddler Jam
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Fiddler Everywhere
-      - Fiddler Classic
-      - Fiddler Jam
-policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+description: >-
+  Honest zero. Fiddler publishes NO rate limits, quotas, throttling windows or
+  rate-limit response headers for any of its interfaces. REPLACES a 2026-05-04
+  bulk-sweep scaffold that asserted an X-RateLimit-* header family, a 429
+  throttling response and per-tier requests-per-minute figures — none of which
+  Progress Telerik has ever published. Those values were invented by the sweep,
+  not read from the provider.
+limits: []
+limit_count: 0
+headers: {}
+responseCodes: {}
+searched:
+  - url: https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/fiddler-mcp-server
+    status: 200
+    finding: >-
+      The MCP server reference documents authentication, tools, sanitization and
+      an admin kill switch. No request quota, throttle, window or rate-limit
+      header is documented.
+  - url: https://www.telerik.com/purchase/fiddler
+    status: 200
+    finding: >-
+      Plans are priced per named user per month with "unlimited capturing
+      capabilities" on every tier. Nothing is metered by request, so there is no
+      rate-limit surface to publish.
+note: >-
+  Structural reason for the zero: Fiddler's only programmatic interface is a
+  loopback MCP server bound to the developer's own machine
+  (http://localhost:8868/mcp). There is no shared multi-tenant endpoint to
+  protect, so the absence of published limits is expected rather than a gap.
+  Gating is by LICENCE (Pro or higher) and by an administrator DisableMCP policy,
+  not by throughput.

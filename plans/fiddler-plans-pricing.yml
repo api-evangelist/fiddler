@@ -3,149 +3,124 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
 provider: Fiddler
 providerId: fiddler
+generated: '2026-08-29'
+method: searched
+source: https://www.telerik.com/purchase/fiddler
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+modified: '2026-08-29'
 tags:
   - API Debugging
   - HTTP Debugging
   - HTTP Proxy
-  - Performance Testing
   - Traffic Inspection
   - Web Development
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+description: >-
+  Published Fiddler Everywhere plans and pricing, read from the provider's own
+  purchase page on 2026-08-29. REPLACES a 2026-05-04 bulk-sweep scaffold whose
+  tier names, quotas and rate figures were placeholder values the provider never
+  published. Fiddler is licensed per named user per month, not by API call —
+  there are no request quotas, so no quota or overage entries are recorded.
+  The MCP server (mcp/fiddler-mcp.yml) is gated to the Pro and Enterprise tiers.
+currency: USD
+billing_periods:
+  - monthly
+  - annual
+unit: per user, per month
+free_tier: false
+free_tier_note: >-
+  Fiddler Everywhere has no free tier. Two free products sit alongside it:
+  Fiddler Classic (free download, non-commercial use only as of 2026-08-03) and
+  Fiddler Everywhere Reporter (free, no login or license required).
 plans:
-  - id: fiddler-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Fiddler API surface. Intended for evaluation, prototyping, and
-      low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Fiddler Everywhere
-      - name: Fiddler Classic
-      - name: Fiddler Jam
-  - id: fiddler-pro
-    name: Professional
+  - id: fiddler-everywhere-lite
+    name: Lite
     type: paid
-    description: Production tier for Fiddler. Provides higher quotas, priority support, and access to
-      the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Fiddler Everywhere
-      - name: Fiddler Classic
-      - name: Fiddler Jam
-  - id: fiddler-enterprise
+    description: For individual users and smaller teams that need only the base features at a lower cost.
+    price_annual: '7.00'
+    price_monthly: '10.00'
+    currency: USD
+    unit: per user, per month
+    max_licenses_per_purchase: 10
+    support:
+      level: Basic
+      response_time: 72h
+      tickets: 5 per user per year (annual) or 1 per user per month (monthly)
+    includes:
+      - Essential feature access
+      - Unlimited capturing capabilities
+      - In-depth traffic inspection
+      - Multiple capturing modes
+      - Capture on local machine
+      - Save/import/export captured traffic
+      - Replay, find and filter traffic
+      - SOC 2, HIPAA and GDPR compliant
+    excludes:
+      - MCP server
+      - Agent Cache
+      - Debugging Assistant
+      - Rules / traffic manipulation
+      - Breakpoints
+      - Compose API requests
+      - Capture traffic from remote devices
+      - Team collaboration / sharing
+  - id: fiddler-everywhere-pro
+    name: Pro
+    type: paid
+    most_popular: true
+    description: For individuals and smaller teams that need to securely debug without sacrifices.
+    price_annual: '13.00'
+    price_monthly: '19.00'
+    currency: USD
+    unit: per user, per month
+    max_licenses_per_purchase: unlimited
+    support:
+      level: Lite
+      response_time: 72h
+      tickets: 10 per user per year (annual) or 1 per user per month (monthly)
+    includes:
+      - Full feature access
+      - Traffic manipulation through Rules
+      - Team collaboration and sharing (traffic, composer requests, rules)
+      - MCP server
+      - Agent Cache
+      - Debugging Assistant
+      - Breakpoints
+      - Compose API requests
+      - Capture traffic from remote devices
+      - AutoSave and saved filters
+    excludes:
+      - Offline / air-gapped mode
+      - Policy-driven installation and managed app configuration
+      - SSO
+  - id: fiddler-everywhere-enterprise
     name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Fiddler. Includes dedicated capacity, contractual SLAs, security
-      review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Fiddler Everywhere
-      - name: Fiddler Classic
-      - name: Fiddler Jam
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+    type: paid
+    description: For larger teams and organizations that need additional control and support.
+    price_annual: '37.00'
+    price_monthly: null
+    currency: USD
+    unit: per user, per month
+    billing_note: Annual subscription only.
+    max_licenses_per_purchase: unlimited
+    support:
+      level: Priority
+      response_time: 24h
+      tickets: unlimited
+    includes:
+      - Everything in Pro
+      - Offline mode (use in air-gapped environment)
+      - Policy-driven installation
+      - Managed app configuration
+      - SSO
+    contact_required_for:
+      - Capture traffic on end-user machines (request access)
+plan_count: 3
+adjacent_free_products:
+  - name: Fiddler Classic
+    price: '0.00'
+    url: https://www.telerik.com/download/fiddler
+    note: Free download; licensed for non-commercial use only as of 2026-08-03.
+  - name: Fiddler Everywhere Reporter
+    price: '0.00'
+    url: https://www.telerik.com/fiddler/fiddler-everywhere-reporter
+    note: Free capture/reporting companion; no login or license required.

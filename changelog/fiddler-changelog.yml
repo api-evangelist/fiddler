@@ -1,0 +1,85 @@
+generated: '2026-08-29'
+method: searched
+source: https://www.telerik.com/support/whats-new/fiddler-everywhere/release-history
+provider: Fiddler
+providerId: fiddler
+description: >-
+  Release history for the Fiddler product family. Progress Telerik publishes a
+  dated release-history index per product with a separate notes page for every
+  version. Recent window only — this is not a full history.
+scheme: semver
+scheme_note: major.minor.patch, published per product, no date-based or header-based API version.
+products:
+  - name: Fiddler Everywhere
+    changelog: https://www.telerik.com/support/whats-new/fiddler-everywhere/release-history
+    current_version: 8.0.2
+    current_version_date: '2026-07-30'
+  - name: Fiddler Classic
+    changelog: https://www.telerik.com/support/whats-new/fiddler/release-history
+    note: >-
+      Maintenance-only. As of 2026-08-03 Fiddler Classic is licensed for
+      non-commercial use only — see lifecycle/fiddler-lifecycle.yml.
+entries:
+  - version: 8.0.2
+    date: '2026-07-30'
+    product: Fiddler Everywhere
+    breaking: false
+  - version: 8.0.1
+    date: '2026-07-22'
+    product: Fiddler Everywhere
+    breaking: false
+    highlights:
+      - Major version 8 line.
+  - version: 7.8.0
+    date: '2026-05-28'
+    product: Fiddler Everywhere
+    breaking: false
+    highlights:
+      - Exposed caching of agent calls through the Fiddler MCP server.
+      - Fixed MCP get_session_details returning a compressed body when sanitization is used.
+  - version: 7.7.3
+    date: '2026-04-14'
+    product: Fiddler Everywhere
+    breaking: false
+    highlights:
+      - Fixed the MCP get_sessions tool failing with agents requiring object-root structured responses.
+      - Fixed MCP get_session_details not returning request and response bodies for POST requests.
+  - version: 7.7.2
+    date: '2026-03-26'
+    product: Fiddler Everywhere
+    breaking: false
+    highlights:
+      - Introduced a new API endpoint for MCP API key generation.
+  - version: 7.7.1
+    date: '2026-03-18'
+    product: Fiddler Everywhere
+    breaking: false
+  - version: 7.7.0
+    date: '2026-03-12'
+    product: Fiddler Everywhere
+    breaking: false
+  - version: 7.6.0
+    date: '2026-01-20'
+    product: Fiddler Everywhere
+    breaking: false
+  - version: 7.5.0
+    date: '2025-11-17'
+    product: Fiddler Everywhere
+    breaking: false
+  - version: 7.4.0
+    date: '2025-10-22'
+    product: Fiddler Everywhere
+    breaking: false
+  - version: 7.3.0
+    date: '2025-09-04'
+    product: Fiddler Everywhere
+    breaking: false
+  - version: 7.2.0
+    date: '2025-08-14'
+    product: Fiddler Everywhere
+    breaking: false
+entry_count: 12
+note: >-
+  Highlights are recorded only where the provider's release-note text was read.
+  Versions listed without highlights were read from the release-history index,
+  which carries version and date only; their per-release notes were not fetched.

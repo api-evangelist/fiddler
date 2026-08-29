@@ -1,12 +1,20 @@
 aid: fiddler
 name: Fiddler
 description: >-
-  Fiddler by Telerik (Progress Software) is a suite of HTTP debugging proxy
+  Fiddler by Telerik (Progress Software) is a family of HTTP debugging proxy
   tools for capturing, inspecting, modifying, and replaying HTTP and HTTPS
-  traffic between computers. The product family includes Fiddler Everywhere
-  (cross-platform), Fiddler Classic (Windows), and Fiddler Jam (browser-based
-  collaboration tool) for API debugging, performance testing, and web
-  development workflows.
+  traffic between a machine and the internet. The line comprises Fiddler
+  Everywhere (the cross-platform flagship), Fiddler Classic (the original
+  Windows proxy, licensed for non-commercial use only as of 2026-08-03),
+  Fiddler Everywhere Reporter (a free capture-and-report companion) and
+  FiddlerCore (an embeddable proxy engine for .NET). Fiddler publishes no
+  hosted REST API; its programmatic surface is a first-party Model Context
+  Protocol server hosted by the Fiddler Everywhere desktop app on the loopback
+  interface, exposing 20 documented tools that let a coding agent start
+  captures, read sessions and request/response details, apply filters, create
+  traffic-rewriting rules, run a reverse proxy and cache LLM agent calls.
+  Progress also publishes three official Agent Skills for it. Fiddler Jam was
+  retired by Progress on 2024-07-01.
 type: Index
 deliveryModel:
   model: saas
@@ -39,10 +47,13 @@ tags:
   - Performance Testing
   - Traffic Inspection
   - Web Development
+  - Developer Tools
+  - Model Context Protocol
+  - Agent Tooling
 url: >-
   https://raw.githubusercontent.com/api-evangelist/fiddler/refs/heads/main/apis.yml
 created: '2026-03-26'
-modified: '2026-03-26'
+modified: '2026-08-29'
 specificationVersion: '0.23'
 apis:
   - aid: fiddler:fiddler-everywhere
@@ -67,16 +78,56 @@ apis:
       - type: Documentation
         url: https://docs.telerik.com/fiddler-everywhere/introduction
       - type: GettingStarted
-        url: https://docs.telerik.com/fiddler-everywhere/get-started/quickstart
+        url: >-
+          https://www.telerik.com/fiddler/fiddler-everywhere/documentation/installation-and-setup/quickstart-windows
       - type: Download
         url: https://www.telerik.com/download/fiddler-everywhere
+  - aid: fiddler:fiddler-everywhere-mcp
+    name: Fiddler Everywhere MCP Server
+    description: >-
+      The Fiddler Everywhere MCP server is the only programmatic interface
+      Progress Telerik publishes for Fiddler. It is hosted by the desktop
+      application on the loopback interface at http://localhost:8868/mcp over
+      streamable HTTP, authenticated with an API key generated in Settings >
+      MCP Server, and gated to the Pro and Enterprise tiers. It exposes 20
+      documented tools covering status and login, browser/terminal/network
+      capture, session retrieval and filtering, traffic-rewriting rules,
+      reverse-proxy configuration and LLM agent-call caching. Because the
+      endpoint is loopback-bound it is not reachable by a remote agent: a person
+      must install, license and sign in to Fiddler Everywhere first.
+    humanURL: >-
+      https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/fiddler-mcp-server
+    baseURL: http://localhost:8868/mcp
+    baseURL_note: >-
+      Recorded as loopback deliberately. This is the real, provider-documented
+      base for the server; there is no hosted host to substitute, and putting a
+      telerik.com host here would name an endpoint that does not exist.
+    tags:
+      - Model Context Protocol
+      - Agent Tooling
+      - HTTP Debugging
+      - Traffic Capture
+    properties:
+      - type: MCPServer
+        url: mcp/fiddler-mcp.yml
+      - type: APIReference
+        url: >-
+          https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/fiddler-mcp-server
+      - type: AgentSkill
+        url: skills/_index.yml
+      - type: Authentication
+        url: authentication/fiddler-authentication.yml
+      - type: Conventions
+        url: conventions/fiddler-conventions.yml
   - aid: fiddler:fiddler-classic
     name: Fiddler Classic
     description: >-
       Fiddler Classic is the original free Windows-based HTTP debugging proxy
       for logging all HTTP and HTTPS traffic between a computer and the
       Internet. It supports traffic inspection, breakpoints, and extensibility
-      through FiddlerScript and extensions.
+      through FiddlerScript and extensions. As of 2026-08-03 it is licensed for
+      non-commercial use only; commercial users were given 45 days to move to
+      Fiddler Everywhere, with commercial use unsupported after 2026-09-17.
     humanURL: https://www.telerik.com/fiddler/fiddler-classic
     tags:
       - Free Tool
@@ -88,51 +139,167 @@ apis:
         url: https://docs.telerik.com/fiddler/configure-fiddler/tasks/configurefiddler
       - type: Download
         url: https://www.telerik.com/download/fiddler
+      - type: Deprecation
+        url: https://www.telerik.com/purchase/license-agreement/fiddler
+  - aid: fiddler:fiddlercore
+    name: FiddlerCore
+    description: >-
+      FiddlerCore is the embeddable Fiddler proxy engine for .NET and .NET
+      Standard applications, licensed and delivered as a download rather than
+      through a public package registry. Two first-party helper libraries
+      (FiddlerCore5.NetworkConnections and BCMakeCert) are published on NuGet by
+      Progress, both last released 2023-03-14.
+    humanURL: https://www.telerik.com/fiddlercore
+    tags:
+      - Embeddable Proxy
+      - .NET
+      - SDK
+      - Traffic Capture
+    properties:
+      - type: Documentation
+        url: https://www.telerik.com/support/fiddlercore
+      - type: SDKs
+        url: packages/fiddler-packages.yml
   - aid: fiddler:fiddler-jam
     name: Fiddler Jam
     description: >-
-      Fiddler Jam is a browser-based troubleshooting solution that enables
-      non-technical users to capture HTTP traffic logs and share them with
-      development teams for collaborative debugging of web issues and API
-      problems.
-    humanURL: https://www.telerik.com/fiddler/jam
+      RETIRED. Fiddler Jam was a browser-based troubleshooting solution that let
+      non-technical users capture HTTP traffic logs and share them with
+      development teams. Progress Software discontinued it on 2024-07-01, closed
+      the portal and deleted all recordings on 2024-12-01, and states it is "no
+      longer a part of the Progress Software portfolio in any way". Its former
+      product page and documentation both return 404; the retirement notice on
+      the purchase page is the only surviving surface. Kept in this profile so
+      the retirement is on the record rather than the product silently
+      vanishing.
+    humanURL: https://www.telerik.com/purchase/fiddler-jam
+    lifecycle: retired
+    retired: '2024-07-01'
     tags:
       - Browser Extension
       - Collaboration
-      - Support
+      - Retired
       - Troubleshooting
     properties:
-      - type: Documentation
-        url: https://docs.telerik.com/fiddler-jam/introduction
+      - type: Deprecation
+        url: https://www.telerik.com/purchase/fiddler-jam
 common:
-  - type: VulnerabilityDisclosure
-    url: security/fiddler-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/fiddler-domain-security.yml
-  - type: GitHubOrganization
-    url: https://github.com/fiddler-labs
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/fiddler-ai
   - type: Website
     url: https://www.telerik.com/fiddler
   - type: Documentation
     url: https://docs.telerik.com/fiddler-everywhere/introduction
-  - type: Blog
-    url: https://www.telerik.com/blogs/fiddler
-  - type: Pricing
-    url: https://www.telerik.com/purchase/fiddler
-  - type: Download
-    url: https://www.telerik.com/download/fiddler-everywhere
+  - type: APIReference
+    url: >-
+      https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/fiddler-mcp-server
+  - type: GettingStarted
+    url: >-
+      https://www.telerik.com/fiddler/fiddler-everywhere/documentation/installation-and-setup/quickstart-windows
   - type: Support
     url: https://www.telerik.com/support/fiddler-everywhere
+  - type: Blog
+    url: https://www.telerik.com/blogs/fiddler
+  - type: Roadmap
+    url: https://feedback.telerik.com/fiddler-everywhere
+  - type: GitHubOrganization
+    url: https://github.com/telerik
+  - type: Pricing
+    url: https://www.telerik.com/purchase/fiddler
+  - type: Plans
+    url: plans/fiddler-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/fiddler-rate-limits.yml
+  - type: SignUp
+    url: https://www.telerik.com/login#register
   - type: Login
     url: https://www.telerik.com/login
-  - type: Signup
-    url: https://www.telerik.com/login#register
+  - type: TermsOfService
+    url: https://www.progress.com/legal/terms-of-use
+  - type: PrivacyPolicy
+    url: https://www.progress.com/legal/privacy-policy
+  - type: Download
+    url: https://www.telerik.com/download/fiddler-everywhere
+  - type: MCPServer
+    url: mcp/fiddler-mcp.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: LLMsTxt
+    url: llms/fiddler-llms.txt
+  - type: Packages
+    url: packages/fiddler-packages.yml
+  - type: SDKs
+    url: packages/fiddler-packages.yml
+  - type: Authentication
+    url: authentication/fiddler-authentication.yml
+  - type: Conventions
+    url: conventions/fiddler-conventions.yml
+  - type: Conformance
+    url: conformance/fiddler-conformance.yml
+  - type: Compliance
+    url: conformance/fiddler-conformance.yml
+  - type: ChangeLog
+    url: changelog/fiddler-changelog.yml
+  - type: Lifecycle
+    url: lifecycle/fiddler-lifecycle.yml
+  - type: StatusPage
+    url: https://status.telerik.com
+  - type: Deprecation
+    url: https://www.telerik.com/purchase/license-agreement/fiddler
+  - type: WellKnown
+    url: well-known/fiddler-well-known.yml
+  - type: SecurityTxt
+    url: well-known/fiddler-security.txt
+  - type: Security
+    url: security/fiddler-vulnerability-disclosure.yml
+  - type: VulnerabilityDisclosure
+    url: security/fiddler-vulnerability-disclosure.yml
+  - type: TrustCenter
+    url: security/fiddler-trust-center.yml
+  - type: DomainSecurity
+    url: security/fiddler-domain-security.yml
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/telerik
+  - type: Twitter
+    url: https://twitter.com/telerik
   - type: Videos
     url: https://www.youtube.com/c/progresssw
-  - type: Twitter
-    url: https://twitter.com/anthropaboroshi
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-29'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1
+x-identity-corrections:
+  date: '2026-08-29'
+  note: >-
+    Three pointers in this profile named a DIFFERENT COMPANY and were removed.
+    Fiddler here is the Telerik/Progress HTTP debugging proxy; the removed
+    pointers belonged to Fiddler AI (fiddler.ai), the ML observability vendor.
+  removed:
+    - type: GitHubOrganization
+      url: https://github.com/fiddler-labs
+      reason: >-
+        HTTP 200 but the org page title is "Fiddler AI" — a different company.
+        Replaced with https://github.com/telerik, which hosts
+        telerik/fiddler-agent-tools, telerik/fiddler-everywhere and
+        telerik/fiddler-everywhere-docs.
+    - type: LinkedIn
+      url: https://www.linkedin.com/company/fiddler-ai
+      reason: HTTP 200, page title "Fiddler AI | LinkedIn" — a different company.
+    - type: Twitter
+      url: https://twitter.com/anthropaboroshi
+      reason: HTTP 404, and the handle has no relationship to Fiddler or Telerik.
+  repaired:
+    - type: GettingStarted
+      was: https://docs.telerik.com/fiddler-everywhere/get-started/quickstart
+      now: >-
+        https://www.telerik.com/fiddler/fiddler-everywhere/documentation/installation-and-setup/quickstart-windows
+      reason: The former URL returned 404; the docs tree moved to installation-and-setup/.
+    - aid: fiddler:fiddler-jam
+      was: https://www.telerik.com/fiddler/jam
+      now: https://www.telerik.com/purchase/fiddler-jam
+      reason: >-
+        Both the product page and docs.telerik.com/fiddler-jam/introduction
+        returned 404 — the product was retired in 2024. The purchase page still
+        carries the retirement notice.

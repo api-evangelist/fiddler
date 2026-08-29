@@ -1,0 +1,124 @@
+generated: '2026-08-29'
+method: searched
+source: https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/fiddler-mcp-server
+provider: Fiddler
+providerId: fiddler
+description: >-
+  Cross-cutting standards and compliance posture for Fiddler (Progress Telerik).
+  Every entry is evidenced by a URL that was fetched, or is recorded as false.
+  No conformance is asserted from marketing copy alone.
+entries:
+  - id: mcp
+    name: Model Context Protocol
+    conforms: true
+    evidence:
+      - >-
+        Fiddler Everywhere ships a first-party MCP server exposing 20 documented
+        tools over streamable HTTP at http://localhost:8868/mcp, with client
+        configuration published for VS Code Copilot, Cursor, Claude Code, Claude
+        Desktop and GitHub Copilot CLI.
+      - https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/fiddler-mcp-server
+    note: >-
+      Protocol version could not be confirmed — the server is loopback-bound and
+      requires a licensed, signed-in installation, so no live initialize
+      handshake was performed.
+  - id: agent-skills
+    name: Agent Skills (SKILL.md packaging)
+    conforms: true
+    evidence:
+      - >-
+        Three official skills published with standard name/description
+        frontmatter at https://github.com/telerik/fiddler-agent-tools, installable
+        via `npx skills add telerik/fiddler-agent-tools/skills`.
+  - id: oauth2
+    name: OAuth 2.0
+    conforms: true
+    evidence:
+      - >-
+        Authorization-code with refresh_token and PKCE S256, advertised at
+        https://www.telerik.com/.well-known/oauth-authorization-server (200).
+    scope: telerik.com website identity only, not a Fiddler product API.
+  - id: rfc8414
+    name: OAuth 2.0 Authorization Server Metadata
+    conforms: true
+    evidence:
+      - https://www.telerik.com/.well-known/oauth-authorization-server returned 200 with issuer, authorization_endpoint, token_endpoint, response_types_supported, grant_types_supported and code_challenge_methods_supported.
+  - id: rfc9116
+    name: security.txt
+    conforms: true
+    evidence:
+      - https://www.telerik.com/.well-known/security.txt returned 200 with Contact, Expires, Canonical, Policy and Preferred-Languages fields.
+  - id: oidc
+    name: OpenID Connect Discovery
+    conforms: false
+    evidence:
+      - https://www.telerik.com/.well-known/openid-configuration returned 404.
+  - id: rfc9457
+    name: Problem Details for HTTP APIs
+    conforms: false
+    evidence:
+      - No HTTP API contract is published, so no error envelope is documented.
+  - id: idempotency
+    name: Idempotency keys
+    conforms: false
+    evidence:
+      - No idempotency key, header or replay-safety guarantee is documented for the MCP tool surface.
+  - id: pagination
+    name: Documented pagination
+    conforms: false
+    evidence:
+      - get_sessions returns the sessions in a source subject to active filters; no page/cursor/limit parameter is documented.
+  - id: api-catalog
+    name: RFC 9727 API catalog
+    conforms: false
+    evidence:
+      - https://www.telerik.com/.well-known/api-catalog returned 404.
+  - id: a2a
+    name: A2A Agent Card
+    conforms: false
+    evidence:
+      - /.well-known/agent-card.json and /.well-known/agent.json both returned 404 on www.telerik.com.
+domain_standard:
+  applicable: false
+  note: >-
+    HTTP debugging proxies have no sector data-interchange standard of the kind
+    the domain_standard_conformance check rewards (no SCIM/OData/FHIR/OpenRTB/
+    HL7/X12 analogue). The relevant open standards for this market are HTTP,
+    TLS and — newly — MCP, all of which are recorded above. REWARD-ONLY check:
+    nothing is invented to fill the slot.
+compliance:
+  published: true
+  source: https://www.progress.com/trust-center
+  trust_center: https://trust.progress.com
+  certifications:
+    - name: ISO/IEC 27001
+      scope: Progress corporate ISMS
+      evidence: https://www.progress.com/trust-center
+    - name: SOC 2
+      scope: Progress
+      evidence: https://www.progress.com/trust-center
+      product_claim: >-
+        The Fiddler purchase page marks "SOC 2 Compliant" against all three
+        Fiddler Everywhere tiers.
+    - name: HIPAA
+      scope: Progress enables customers subject to HIPAA
+      evidence: https://www.progress.com/trust-center
+      product_claim: >-
+        The Fiddler purchase page marks "HIPAA Compliant" against all three
+        Fiddler Everywhere tiers.
+    - name: GDPR
+      scope: product claim
+      evidence: https://www.telerik.com/purchase/fiddler
+      product_claim: >-
+        The Fiddler purchase page marks "GDPR Compliant" against all three
+        Fiddler Everywhere tiers.
+  not_claimed:
+    - PCI DSS
+    - FedRAMP
+    - ISO 27017
+    - ISO 27018
+  note: >-
+    ISO 27001, SOC 2 and HIPAA are Progress-wide claims on the corporate trust
+    center. SOC 2 / HIPAA / GDPR are additionally claimed per-tier on the Fiddler
+    purchase page, which is the closest thing to a product-scoped assertion the
+    provider publishes.
