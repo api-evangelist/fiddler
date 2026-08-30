@@ -48,6 +48,16 @@ tags:
   - Traffic Inspection
   - Web Development
   - Developer Tools
+  - MCP
+  - Agent Tooling
+tags_raw:
+  - API Debugging
+  - HTTP Debugging
+  - HTTP Proxy
+  - Performance Testing
+  - Traffic Inspection
+  - Web Development
+  - Developer Tools
   - Model Context Protocol
   - Agent Tooling
 url: >-
@@ -66,7 +76,7 @@ apis:
     humanURL: https://www.telerik.com/fiddler/fiddler-everywhere
     tags:
       - API Testing
-      - Cross-Platform
+      - Cross Platform
       - HTTP Debugging
       - Traffic Capture
     tags_raw:
@@ -103,6 +113,11 @@ apis:
       base for the server; there is no hosted host to substitute, and putting a
       telerik.com host here would name an endpoint that does not exist.
     tags:
+      - MCP
+      - Agent Tooling
+      - HTTP Debugging
+      - Traffic Capture
+    tags_raw:
       - Model Context Protocol
       - Agent Tooling
       - HTTP Debugging

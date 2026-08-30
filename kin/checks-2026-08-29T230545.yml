@@ -1,23 +1,21 @@
 ---
 kin_checks:
   slug: fiddler
-  schema_version: 0.15.1
-  scored_at: '2026-08-28'
-  run_ts: 2026-08-28T221322
+  schema_version: 0.16.0
+  scored_at: '2026-08-29'
+  run_ts: 2026-08-29T230545
   note: Actionable checks only (missed + partial). earned/na are every other check
-    in rubric/scoring-0.15.1.yml; counts below let you verify that.
+    in rubric/scoring-0.16.0.yml; counts below let you verify that.
   counts:
     total: 130
-    earned: 15
-    partial: 7
-    missed: 66
+    earned: 38
+    partial: 6
+    missed: 44
     na: 42
   checks:
   - id: base_url_per_api
     status: missed
   - id: well_known_published
-    status: missed
-  - id: llms_txt_published
     status: missed
   - id: apis_json_self_hosted
     status: missed
@@ -55,30 +53,15 @@ kin_checks:
     status: missed
   - id: overlay_published
     status: missed
-  - id: change_log_present
+  - id: rate_limits_documented
     status: missed
-  - id: status_page_present
-    status: missed
-  - id: deprecation_policy
-    status: missed
-  - id: security_disclosure
+  - id: rate_limits_rich
     status: missed
   - id: webhooks_advertised
-    status: missed
-  - id: roadmap_present
     status: missed
   - id: examples_published
     status: missed
   - id: portal_present
-    status: missed
-  - id: api_reference_present
-    status: missed
-  - id: getting_started_present
-    status: missed
-    detail: pointer liveness 0.0
-  - id: authentication_documented
-    status: missed
-  - id: sdk_count_1
     status: missed
   - id: sdk_count_3
     status: missed
@@ -88,37 +71,13 @@ kin_checks:
     status: missed
   - id: postman_present
     status: missed
-  - id: agent_skill_present
-    status: missed
-  - id: terms_of_service
-    status: missed
-  - id: privacy_policy
-    status: missed
-  - id: compliance_published
-    status: missed
-  - id: trust_center
-    status: missed
   - id: reg_oauth_scopes
-    status: missed
-  - id: reg_authentication_documented
-    status: missed
-  - id: reg_terms_of_service
-    status: missed
-  - id: reg_privacy_policy
-    status: missed
-  - id: reg_compliance_published
-    status: missed
-  - id: reg_standards_conformance
     status: missed
   - id: spec_presence
     status: missed
   - id: agentic_access
     status: missed
   - id: reversibility_documented
-    status: missed
-  - id: mcp_server
-    status: missed
-  - id: auth_clarity
     status: missed
   - id: idempotency
     status: missed
@@ -128,8 +87,6 @@ kin_checks:
     status: missed
   - id: event_surface_described
     status: missed
-  - id: agent_skills
-    status: missed
   - id: well_known_catalog
     status: missed
   - id: consent_identity
@@ -138,20 +95,12 @@ kin_checks:
     status: missed
   - id: dry_run_mode
     status: missed
-  - id: delegated_identity
-    status: missed
   - id: protected_resource_metadata
     status: missed
   - id: dynamic_client_registration
     status: missed
   - id: agentic_commerce
     status: missed
-  - id: rate_limits_documented
-    status: partial
-    earned: 2.0
-  - id: rate_limits_rich
-    status: partial
-    earned: 1.0
   - id: github_org_present
     status: partial
     earned: 1.0
@@ -162,10 +111,14 @@ kin_checks:
   - id: plans_multiple
     status: partial
     earned: 1.0
-  - id: sign_up_present
+  - id: mcp_server
     status: partial
-    earned: 2.5
-    detail: pointer liveness 0.5
+    earned: 4.8
+    detail: 'grade: documented'
+  - id: auth_clarity
+    status: partial
+    earned: 9.0
+    detail: 'grade: served'
   - id: rate_limit_signal
     status: partial
     earned: 3.5
