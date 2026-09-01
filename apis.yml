@@ -76,7 +76,7 @@ apis:
     humanURL: https://www.telerik.com/fiddler/fiddler-everywhere
     tags:
       - API Testing
-      - Cross Platform
+      - Cross-Platform
       - HTTP Debugging
       - Traffic Capture
     tags_raw:
