@@ -2,13 +2,18 @@
   "repo": "fiddler",
   "feeds": [
     {
+      "source": "https://www.telerik.com/support/fiddler-everywhere",
+      "feed_url": "https://www.telerik.com/support/fiddler-everywhere",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
       "source": "https://feeds.telerik.com/blogs/productivity-debugging",
       "feed_url": "https://feeds.telerik.com/blogs/productivity-debugging",
       "title": "",
       "saved": 0,
-      "method": "feed",
-      "nature": "undetermined",
-      "nature_basis": null
+      "method": "feed"
     },
     {
       "source": "https://docs.telerik.com/fiddler-everywhere/introduction",
@@ -16,17 +21,10 @@
       "title": "",
       "saved": 0,
       "method": "none"
-    },
-    {
-      "source": "https://www.telerik.com/support/fiddler-everywhere",
-      "feed_url": "https://www.telerik.com/support/fiddler-everywhere",
-      "title": "",
-      "saved": 0,
-      "method": "none"
     }
   ],
   "post_count": 17,
-  "fetched": "2026-08-30T22:33:40Z",
+  "fetched": "2026-09-06T19:17:18Z",
   "feed_nature": "undetermined",
   "feed_nature_basis": null,
   "feed_nature_note": "Whether these posts are the vendor publishing or its support community, decided on the URL path grammar of the saved posts -- not the hostname, which carries both on Khoros, and not author diversity, which flags large vendor blogs as forums. 'undetermined' means undetermined."
