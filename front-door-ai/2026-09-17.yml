@@ -1,0 +1,32 @@
+# Front Door AI Index — fiddler — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: fiddler
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.telerik.com
+  final_host: www.telerik.com
+  ownership: own
+  owner: fiddler
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 38
+  host_score: 38
+  density: 20.84
+  words: 1823
+  tiers:
+    agentic: 13
+    core: 25
+    model: 0
+  ambiguous: 10
+  top_terms:
+    AI: 23
+    agent: 9
+    prompts: 5
+    MCP: 4
+    agentic: 3
+    LLMs: 2
+    AI agent: 1
+    smart: 1
