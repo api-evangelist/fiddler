@@ -199,6 +199,8 @@ apis:
       - type: Deprecation
         url: https://www.telerik.com/purchase/fiddler-jam
 common:
+  - type: FinOps
+    url: finops/fiddler-finops.yml
   - type: Website
     url: https://www.telerik.com/fiddler
   - type: Documentation
