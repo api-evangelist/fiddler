@@ -1,4 +1,4 @@
-# Fiddler (fiddler)
+# Fiddler
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,100 +64,127 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Fiddler by Telerik (Progress Software) is a suite of HTTP debugging proxy tools for capturing, inspecting, modifying, and replaying HTTP and HTTPS traffic between computers. The product family includes Fiddler Everywhere (cross-platform), Fiddler Classic (Windows), and Fiddler Jam (browser-based collaboration tool) for API debugging, performance testing, and web development workflows.
+Fiddler by Telerik (Progress Software) is a family of HTTP debugging proxy tools for capturing, inspecting, modifying, and replaying HTTP and HTTPS traffic between a machine and the internet. The line comprises Fiddler Everywhere (the cross-platform flagship), Fiddler Classic (the original Windows proxy, licensed for non-commercial use only as of 2026-08-03), Fiddler Everywhere Reporter (a free capture-and-report companion) and FiddlerCore (an embeddable proxy engine for .NET). Fiddler publishes no hosted REST API; its programmatic surface is a first-party Model Context Protocol server hosted by the Fiddler Everywhere desktop app on the loopback interface, exposing 20 documented tools that let a coding agent start captures, read sessions and request/response details, apply filters, create traffic-rewriting rules, run a reverse proxy and cache LLM agent calls. Progress also publishes three official Agent Skills for it. Fiddler Jam was retired by Progress on 2024-07-01.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/fiddler/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/fiddler/refs/heads/main/apis.yml)
+**Areas:** API Debugging · HTTP Debugging · HTTP Proxy · Performance Testing · Traffic Inspection · Web Development · Developer Tools · MCP · Agent Tooling
 
-## Scope
+## Fiddler on APIs.io
 
-- **Type:** Index
+Everything profiled for Fiddler is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/fiddler/](https://apis.io/providers/fiddler/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- API Debugging
-- HTTP Debugging
-- HTTP Proxy
-- Performance Testing
-- Traffic Inspection
-- Web Development
+- [Fiddler Everywhere](https://apis.io/apis/fiddler/fiddler-everywhere/) — Fiddler Everywhere is a cross-platform web debugging proxy for macOS, Windows, and Linux. It captures HTTP and HTTPS traffic, provides API composition…
+- [Fiddler Everywhere MCP Server](https://apis.io/apis/fiddler/fiddler-everywhere-mcp/) — The Fiddler Everywhere MCP server is the only programmatic interface Progress Telerik publishes for Fiddler. It is hosted by the desktop application on the…
+- [Fiddler Classic](https://apis.io/apis/fiddler/fiddler-classic/) — Fiddler Classic is the original free Windows-based HTTP debugging proxy for logging all HTTP and HTTPS traffic between a computer and the Internet. It…
+- [FiddlerCore](https://apis.io/apis/fiddler/fiddlercore/) — FiddlerCore is the embeddable Fiddler proxy engine for .NET and .NET Standard applications, licensed and delivered as a download rather than through a…
+- [Fiddler Jam](https://apis.io/apis/fiddler/fiddler-jam/) — RETIRED. Fiddler Jam was a browser-based troubleshooting solution that let non-technical users capture HTTP traffic logs and share them with development…
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-26
-- **Modified:** 2026-03-26
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### Fiddler Everywhere
+Model Context Protocol servers that expose the API to agents.
 
-Fiddler Everywhere is a cross-platform web debugging proxy for macOS, Windows, and Linux. It captures HTTP and HTTPS traffic, provides API composition capabilities, and includes collaboration features for team debugging and API testing workflows.
+- [Fiddler Everywhere MCP Server](https://apis.io/servers/fiddler/fiddler-everywhere-mcp-server/)
 
-- **Human URL:** [https://www.telerik.com/fiddler/fiddler-everywhere](https://www.telerik.com/fiddler/fiddler-everywhere)
+#### Security (4)
 
-#### Tags
+Authentication, trust centre, and vulnerability disclosure.
 
-- API Testing
-- Cross Platform
-- HTTP Debugging
-- Traffic Capture
+- [Fiddler Authentication](https://apis.io/security/fiddler/fiddler-authentication/)
+- [Fiddler Domain Security](https://apis.io/security/fiddler/fiddler-domain-security/)
+- [Fiddler Trust Center](https://apis.io/security/fiddler/fiddler-trust-center/)
+- [Fiddler Vulnerability Disclosure](https://apis.io/security/fiddler/fiddler-vulnerability-disclosure/)
 
-#### Properties
+#### Plans and pricing (1)
 
-- [Documentation](https://docs.telerik.com/fiddler-everywhere/introduction)
-- [Getting Started](https://docs.telerik.com/fiddler-everywhere/get-started/quickstart)
-- [Download](https://www.telerik.com/download/fiddler-everywhere)
+Published plans, tiers and prices.
 
-### Fiddler Classic
+- [Fiddler Plans Pricing](https://apis.io/plans/fiddler/fiddler-plans-pricing/)
 
-Fiddler Classic is the original free Windows-based HTTP debugging proxy for logging all HTTP and HTTPS traffic between a computer and the Internet. It supports traffic inspection, breakpoints, and extensibility through FiddlerScript and extensions.
+#### Rate limits (1)
 
-- **Human URL:** [https://www.telerik.com/fiddler/fiddler-classic](https://www.telerik.com/fiddler/fiddler-classic)
+Published request limits.
 
-#### Tags
+- [Fiddler Rate Limits](https://apis.io/rate-limits/fiddler/fiddler-rate-limits/)
 
-- Free Tool
-- HTTP Debugging
-- Traffic Logging
-- Windows
+#### FinOps (1)
 
-#### Properties
+What the API costs to run, by operation.
 
-- [Documentation](https://docs.telerik.com/fiddler/configure-fiddler/tasks/configurefiddler)
-- [Download](https://www.telerik.com/download/fiddler)
+- [Fiddler Finops](https://apis.io/finops/fiddler/fiddler-finops/)
 
-### Fiddler Jam
+## Where to find this API
 
-Fiddler Jam is a browser-based troubleshooting solution that enables non-technical users to capture HTTP traffic logs and share them with development teams for collaborative debugging of web issues and API problems.
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- **Human URL:** [https://www.telerik.com/fiddler/jam](https://www.telerik.com/fiddler/jam)
-
-#### Tags
-
-- Browser Extension
-- Collaboration
-- Support
-- Troubleshooting
-
-#### Properties
-
-- [Documentation](https://docs.telerik.com/fiddler-jam/introduction)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/fiddler-labs)
-- [LinkedIn](https://www.linkedin.com/company/fiddler-ai)
 - [Website](https://www.telerik.com/fiddler)
 - [Documentation](https://docs.telerik.com/fiddler-everywhere/introduction)
-- [Blog](https://www.telerik.com/blogs/fiddler)
+- [Getting started](https://www.telerik.com/fiddler/fiddler-everywhere/documentation/installation-and-setup/quickstart-windows)
+- [API reference](https://www.telerik.com/fiddler/fiddler-everywhere/documentation/agent-tools/fiddler-mcp-server)
 - [Pricing](https://www.telerik.com/purchase/fiddler)
-- [Download](https://www.telerik.com/download/fiddler-everywhere)
+- [Sign up](https://www.telerik.com/login#register)
 - [Support](https://www.telerik.com/support/fiddler-everywhere)
-- [Login](https://www.telerik.com/login)
-- [Sign Up](https://www.telerik.com/login#register)
-- [Videos](https://www.youtube.com/c/progresssw)
-- [Twitter](https://twitter.com/anthropaboroshi)
+- [Blog](https://www.telerik.com/blogs/fiddler)
+- [Terms of service](https://www.progress.com/legal/terms-of-use)
+- [Privacy policy](https://www.progress.com/legal/privacy-policy)
+- [GitHub](https://github.com/telerik)
+- [Status](https://status.telerik.com)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 48.2** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 68.3 |
+| Contract quality | 0.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 57.9 |
+| Developer ergonomics | 61.9 |
+| Access clarity | 92.1 |
+
+**Agent readiness 20.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | yes |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/fiddler/](https://apis.io/providers/fiddler/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Fiddler: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/fiddler/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
